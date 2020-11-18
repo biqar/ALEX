@@ -48,7 +48,7 @@ class AlexNode {
   // Node's level in the RMI. Root node is level 0
   short level_ = 0;
 
-  // Both model nodes and data nodes nodes use models
+  // Both model nodes and data nodes use models
   LinearModel<T> model_;
 
   // Could be either the expected or empirical cost, depending on how this field
@@ -69,8 +69,7 @@ class AlexModelNode : public AlexNode<T, P> {
  public:
   typedef AlexModelNode<T, P, Alloc> self_type;
   typedef typename Alloc::template rebind<self_type>::other alloc_type;
-  typedef typename Alloc::template rebind<AlexNode<T, P>*>::other
-      pointer_alloc_type;
+  typedef typename Alloc::template rebind<AlexNode<T, P>*>::other pointer_alloc_type;
 
   const Alloc& allocator_;
 
@@ -339,9 +338,8 @@ class AlexDataNode : public AlexNode<T, P> {
   static constexpr double kMinDensity_ = 0.6;  // density after expanding, also
                                                // determines the contraction
                                                // threshold
-  double expansion_threshold_ = 1;  // expand after m_num_keys is >= this number
-  double contraction_threshold_ =
-      0;  // contract after m_num_keys is < this number
+  double expansion_threshold_ = 1;  // expand after num_keys is >= this number
+  double contraction_threshold_ = 0;  // contract after num_keys is < this number
   static constexpr int kDefaultMaxDataNodeBytes_ =
       1 << 24;  // by default, maximum data node size is 16MB
   int max_slots_ =
